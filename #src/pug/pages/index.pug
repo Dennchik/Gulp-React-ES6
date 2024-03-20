@@ -1,0 +1,73 @@
+extends ../layout/app
+block page 
+	include ../includes/mixins.pug
+	div(class="wrapper") 
+		include ../chunk/header
+		main.main-content._container  
+			._title
+				h1 Главная!!
+			._body 
+				section._top
+					._list 
+						each item  in news
+							ul._items 
+								li
+									h3._item= item.name
+								li
+									a(href="")._text= item.body
+					._list 
+						each item  in news
+							ul._items 
+								li 
+									h3._item= item.name
+								li 
+									a(href="")._text= item.body
+				._rellax-wrapper
+					._content._rellax-wrapper
+						section._middle
+							._rellax-box
+								._title
+									h1 RELAX BLOCK
+								._main-slide
+									._slide 
+										img._img(alt="Изображение" src="img/cover.jpg") 
+									._slide
+										img._img(alt="Изображение" src="img/img_snow.jpg") 
+						section._middle._rellax(data-rellax-speed="4" data-rellax-percentage="-0.1")
+							._rellax-box
+								._title
+									h1 RELAX BLOCK
+								._main-slide
+									._slide 
+										img._img(alt="Изображение" src="img/cover.jpg") 
+									._slide
+										img._img(alt="Изображение" src="img/img_snow.jpg") 
+						section._middle._rellax(data-rellax-speed="2" data-rellax-percentage="-1.9")  
+							._rellax-box
+								._title
+									h1 RELAX BLOCK
+								._main-slide
+									._slide 
+										img._img(alt="Изображение" src="img/cover.jpg") 
+									._slide
+										img._img(alt="Изображение" src="img/img_snow.jpg")
+						section._middle._rellax(data-rellax-speed="6" data-rellax-percentage="-1.05") 
+							._rellax-box
+								._title
+									h1 RELAX BLOCK
+								._main-slide
+									._slide 
+										img._img(alt="Изображение" src="img/cover.jpg") 
+									._slide 
+										img._img(alt="Изображение" src="img/img_snow.jpg") 
+						section._middle._rellax(data-rellax-speed="4" data-rellax-percentage="-2.5")
+							._rellax-box
+								._title
+									h1 RELAX BLOCK
+								._main-slide
+									._slide 
+										img._img(alt="Изображение" src="img/cover.jpg") 
+									._slide
+										img._img(alt="Изображение" src="img/img_snow.jpg") 
+
+		include ../chunk/footer

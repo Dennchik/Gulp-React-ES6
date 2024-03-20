@@ -28,8 +28,13 @@ export default {
 		dest: pathDest + '/css',
 	},
 	js: {
-		src: pathSrc + "/js/*.js",
+		src: pathSrc + '/js/*.js',
 		watch: pathSrc + "/js/**/*.js",
+		dest: pathDest + "/js"
+	},
+	react: {
+		src: pathSrc + '/js/assets/*.jsx',
+		watch: pathSrc + "/js/**/*.jsx",
 		dest: pathDest + "/js"
 	},
 	image: {
@@ -43,7 +48,7 @@ export default {
 		dest: pathDest + '/img/sprites'
 	},
 	fonts: {
-		src: pathSrc + "/fonts/*.{eot,ttf,otf,otc,ttc,woff,woff2,svg}",
+		src: pathSrc + '/fonts/*.{eot,ttf,otf,otc,ttc,woff,woff2,svg}',
 		watch: pathSrc + "/fonts/**/*.{eot,ttf,otf,otc,ttc,woff,woff2,svg}",
 		dest: pathDest + "/fonts"
 	},

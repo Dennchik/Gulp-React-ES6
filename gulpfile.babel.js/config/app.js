@@ -14,6 +14,7 @@ export default {
 		// mode: isProd ? 'production' : 'development',
 		mode: 'production',
 		entry: {
+			app: './#src/js/assets/app.jsx',
 			main: './#src/js/main.js'
 		},
 		output: {
@@ -22,8 +23,32 @@ export default {
 		module: {
 			rules: [
 				{
-					test: /\.css$/,
-					use: ['style-loader', 'css-loader',],
+					// test: /\.(?:js|jsx)$/,
+					test: /\.(js|jsx)$/,
+					exclude: /node_modules/,
+					use: ['babel-loader'],
+				},
+				{
+					// test: /\.css$/, 
+					test: /\.s(a|c)ss$/,
+					exclude: /node_modules/,
+					use: [
+						'style-loader',
+						{
+							loader: 'css-loader',
+							options: {
+								module: true,
+								sourceMao: isProd
+							}
+						},
+						{
+							loader: 'sass-loader',
+							options: {
+								module: true,
+								sourceMao: isProd
+							}
+						}
+					]
 				},
 			],
 		},

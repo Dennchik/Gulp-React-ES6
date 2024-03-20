@@ -20,6 +20,7 @@ import app from './config/app.js';
 import clear from './task/clear';
 import pug from './task/pug';
 import js from './task/js';
+import react from './task/react';
 import json from './task/json';
 import html from './task/html';
 import scss from './task/scss';
@@ -35,6 +36,7 @@ const change = $.gulp.series(clearFonts, fonts, fontsStyle);
 //* Observation
 const watcher = () => {
 	$.gulp.watch(path.js.watch, js).on('all', $.browserSync.reload);
+	$.gulp.watch(path.react.watch, react).on('all', $.browserSync.reload);
 	$.gulp.watch(path.pug.watch, pug).on('all', $.browserSync.reload);
 	$.gulp.watch(path.json.watch, json).on('all', $.browserSync.reload);
 	$.gulp.watch(path.json.readFile, pug).on('all', $.browserSync.reload);
@@ -46,7 +48,7 @@ const watcher = () => {
 };
 const end = $.gulp.series(
 	clear, json,
-	$.gulp.parallel(pug, image, sprite, scss, js, fonts), fontsStyle
+	$.gulp.parallel(pug, image, sprite, scss, js, react, fonts), fontsStyle
 );
 const dev = $.gulp.series(end, $.gulp.parallel(watcher, server));
 //* Call back
@@ -57,6 +59,7 @@ export { json };
 export { html };
 export { scss };
 export { js };
+export { react };
 export { image };
 export { sprite };
 export { fonts };

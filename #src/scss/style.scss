@@ -1,0 +1,49 @@
+@import 'core/mixins';
+@import 'core/variables';
+@import 'core/fonts';
+.wrapper {
+	// height: 100%;
+	margin: 0 auto;
+	// display: flex;
+	flex-direction: column;
+}
+
+[class^='grid-'] {
+	display: grid;
+	place-self: center;
+}
+
+[class*='_grid-container'] {
+	display: grid;
+	grid-template-columns: auto auto auto;
+}
+
+[class*='_container'] {
+	display: flex;
+	flex-direction: column;
+	box-sizing: content-box;
+	max-width: $maxWidthContainer;
+	margin: 0 auto;
+	padding: 0 15px;
+}
+
+[class*='_wrap-container'] {
+	max-width: $maxWidth;
+	margin: 0 auto;
+}
+
+[class*='_stretch'] {
+	position: relative;
+	z-index: 0;
+	min-height: calc(100vh - ($headerHeight + $footerHeight));
+	border: 1px solid #3537c5;
+}
+
+@import 'core/reset';
+@import url('https://fonts.googleapis.com/css?family=Play:regular,700&display=swap&subset=cyrillic-ext');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,regular,500,700,900&display=swap&subset=cyrillic-ext');
+// -----------------------------------------------------------------------------
+@import 'section/page';
+@import 'bem-block/header.sass';
+@import 'bem-block/footer.sass';
+// -----------------------------------------------------------------------------
