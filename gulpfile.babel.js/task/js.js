@@ -10,14 +10,13 @@ export default () => {
 				message: error.message
 			}))
 		}))
-		.pipe($.gul.babel())
-		.pipe($.webPackStream(app.webpack))
 		.pipe($.gulpIf(app.isDev, $.gul.sourcemaps.init({
 			loadMaps: true
 		})))
+		.pipe($.gul.babel())
+		.pipe($.webPackStream(app.webpack))
 		.pipe($.gulpIf(app.isDev, $.gul.sourcemaps.write('.', {
 			includeContent: false,
 		})))
-
 		.pipe($.gulp.dest(path.js.dest));
 };

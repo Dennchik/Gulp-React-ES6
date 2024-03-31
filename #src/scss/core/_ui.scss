@@ -5,6 +5,7 @@
 	-o--filter: grayscale(1);
 	filter: grayscale(1);
 }
+
 %graystyleoff {
 	transition: all 0.3s ease 0s;
 	-webkit-filter: grayscale(0);

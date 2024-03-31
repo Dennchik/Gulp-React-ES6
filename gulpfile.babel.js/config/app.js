@@ -1,8 +1,7 @@
-// import pngquant from "imagemin-pngquant";
-// import recompress from "imagemin-jpeg-recompress";
-const path = require('path');
+import TerserPlugin from 'terser-webpack-plugin';
 import pugbem from "gulp-pugbem";
 import imagemin from "gulp-imagemin";
+
 const isProd = process.argv.includes("--production");
 const isDev = !isProd;
 
@@ -10,11 +9,84 @@ export default {
 	isProd: isProd,
 	isDev: isDev,
 
+	webpackReact: {
+		// mode: isProd ? 'production' : 'development',
+		mode: 'production',
+		optimization: {
+			minimize: true,
+			minimizer: [
+				new TerserPlugin({
+					terserOptions: {
+						format: {
+							comments: false,
+						},
+					},
+					extractComments: false,
+				}),
+			],
+		},
+		entry: {
+			app_gsap: './#src/js/assets/app-gsap.jsx',
+		},
+		output: {
+			filename: '[name].min.js',
+		},
+		module: {
+			rules: [
+				{
+					test: /\.(js|jsx)$/,
+					exclude: /node_modules/,
+					use: ['babel-loader'],
+				},
+				{
+					test: /\.css$/,
+					use: [
+						"style-loader",
+						"css-loader"
+					],
+				},
+				{
+					test: /\.scss$/,
+					exclude: /node_modules/,
+					use: [
+						"style-loader",
+						"css-loader",
+						'sass-loader'   // компилирует Sass в CSS
+					]
+				},
+			],
+		},
+
+	},
 	webpack: {
 		// mode: isProd ? 'production' : 'development',
 		mode: 'production',
+		optimization: {
+			minimize: true,
+			minimizer: [
+				new TerserPlugin({
+					terserOptions: {
+						format: {
+							comments: false,
+						},
+					},
+					extractComments: false,
+				}),
+			],
+			splitChunks: {
+				chunks: 'async',
+				cacheGroups: {
+					vendor: {
+						test: /[\\/]module[\\/]/,
+						name: 'vendors',
+						chunks: 'all',
+					},
+				},
+			},
+		},
 		entry: {
-			app: './#src/js/assets/app.jsx',
+			app_jsx: './#src/js/module/app_jsx.jsx',
+			app: './#src/js/app.js',
 			main: './#src/js/main.js'
 		},
 		output: {
@@ -23,36 +95,31 @@ export default {
 		module: {
 			rules: [
 				{
-					// test: /\.(?:js|jsx)$/,
 					test: /\.(js|jsx)$/,
 					exclude: /node_modules/,
 					use: ['babel-loader'],
 				},
 				{
-					// test: /\.css$/, 
-					test: /\.s(a|c)ss$/,
+					test: /\.css$/,
+					use: [
+						"style-loader",
+						"css-loader"
+					],
+				},
+				{
+					test: /\.scss$/,
 					exclude: /node_modules/,
 					use: [
-						'style-loader',
-						{
-							loader: 'css-loader',
-							options: {
-								module: true,
-								sourceMao: isProd
-							}
-						},
-						{
-							loader: 'sass-loader',
-							options: {
-								module: true,
-								sourceMao: isProd
-							}
-						}
+						"style-loader",
+						"css-loader",
+						'sass-loader'   // компилирует Sass в CSS
 					]
 				},
 			],
 		},
+
 	},
+
 	svgSpr: {
 		shape: {
 			id: {
@@ -102,6 +169,12 @@ export default {
 		extname: '.js',
 		suffix: '.min',
 	},
+	minJs: {
+		ext: {
+			src: '.js',
+			min: '.min.js'
+		}
+	},
 	svgMin: {
 		js2svg: {
 			indent: 4,
@@ -149,24 +222,4 @@ export default {
 			progressive: true
 		}),
 	]),
-	// imagemin: ({
-	// 	verbose: true,
-	// 	interlaced: true,
-	// 	progressive: true,
-	// 	optimizationLevel: 5,
-	// }
-	// [
-	// 	recompress({
-	// 		loops: 6,
-	// 		min: 50,
-	// 		max: 90,
-	// 		quality: 'high',
-	// 		use: [pngquant({
-	// 			quality: [0.8, 1],
-	// 			strip: true,
-	// 			speed: 1
-	// 		})],
-	// 	})
-	// ]
-	// )
 }; 

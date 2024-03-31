@@ -1,49 +1,79 @@
-@import 'core/mixins';
+// todo -------------------------- Variables -----------------------------------
+@import 'layouts/bem-block';
 @import 'core/variables';
+@import 'core/variables-icon';
+@import 'core/swiper-vars';
+//todo ---------------------------- Core ---------------------------------------
+@import 'core/mixins';
+@import 'core/extend';
+@import 'core/modifiers';
+@import 'core/reset';
+@import 'core/ui';
+//todo ------------------------- Default fonts ---------------------------------
+// &display=swap&subset=cyrillic-ext
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,regular,400,500,700&display=swap&subset=cyrillic-ext);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab:100,200,300,regular,500,600,700,800,900&display=swap&subset=cyrillic-ext);
+@import url(https://fonts.googleapis.com/css?family=Fira+Code:300,regular,500,600,700&display=swap&subset=cyrillic-ext);
+// todo --------------------------- Fonts --------------------------------------
 @import 'core/fonts';
+//todo  ------------------------ Icon Fonts ------------------------------------
+@import 'core/iconfonts';
+// todo -------------------------- Plugins -------------------------------------
+// @import 'components/swiper';
+// @import 'components/swiper-pagination';
+// @import 'components/swiper-scrollbar';
+// @import 'assets/swiper-bundle';
+// todo -------------------------- Classes -------------------------------------
+// #region
 .wrapper {
-	// height: 100%;
+	position: fixed;
+	overflow: hidden;
+	width: 100%;
+	background: linear-gradient(120deg, #130b1f 13.57%, #0f091f 98.38%);
+	background-blend-mode: darken;
+	background-size: cover;
+	// @extend .gradient;
+	min-height: 100vh;
 	margin: 0 auto;
-	// display: flex;
+	display: flex;
 	flex-direction: column;
-}
-
-[class^='grid-'] {
-	display: grid;
-	place-self: center;
-}
-
-[class*='_grid-container'] {
-	display: grid;
-	grid-template-columns: auto auto auto;
 }
 
 [class*='_container'] {
-	display: flex;
-	flex-direction: column;
-	box-sizing: content-box;
+	/* border: groove; */
 	max-width: $maxWidthContainer;
+	box-sizing: content-box;
 	margin: 0 auto;
 	padding: 0 15px;
 }
 
-[class*='_wrap-container'] {
-	max-width: $maxWidth;
-	margin: 0 auto;
+[class*='grid-'] {
+	display: grid;
+}
+
+[class*='icon-'] {
+	cursor: pointer;
+	height: 100%;
+	// @include flex-align-center-justify-center;
 }
 
 [class*='_stretch'] {
 	position: relative;
 	z-index: 0;
-	min-height: calc(100vh - ($headerHeight + $footerHeight));
-	border: 1px solid #3537c5;
+	// min-height: calc(100vh - ($headerHeight + $footerHeight));
 }
 
-@import 'core/reset';
-@import url('https://fonts.googleapis.com/css?family=Play:regular,700&display=swap&subset=cyrillic-ext');
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,regular,500,700,900&display=swap&subset=cyrillic-ext');
-// -----------------------------------------------------------------------------
-@import 'section/page';
-@import 'bem-block/header.sass';
-@import 'bem-block/footer.sass';
-// -----------------------------------------------------------------------------
+// todo --------------------------- Assets -------------------------------------
+// @import 'assets/burger-bottom';
+// todo --------------------------- layout -------------------------------------
+// @use 'layouts/bem-block';
+// @import 'layouts/header';
+// @import 'layouts/footer';
+// todo --------------------------- Pages --------------------------------------
+// @import 'pages/page';
+@import 'pages/main-content';
+// @import 'pages/ScrollAccordion.scss';
+// todo --------------------------- Modules ------------------------------------
+// @import 'modules/loading';
+// @import 'modules/breadcrumbs';
+// todo -------------------------- Sections ------------------------------------

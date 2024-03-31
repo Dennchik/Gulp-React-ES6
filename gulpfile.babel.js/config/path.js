@@ -1,6 +1,5 @@
 const pathSrc = "./#src";
 const pathDest = "./build";
-const pathEnd = "./public";
 
 export default {
 	root: pathDest,
@@ -24,18 +23,24 @@ export default {
 	},
 	scss: {
 		src: pathSrc + '/scss/*.{sass,scss}',
-		watch: pathSrc + '/scss/**/*.{sass,scss}',
+		watch: [pathSrc + '/scss/**/*.{sass,scss}', '!' + pathSrc + '/scss/app/**/*.{sass,scss}'],
+
 		dest: pathDest + '/css',
 	},
 	js: {
 		src: pathSrc + '/js/*.js',
-		watch: pathSrc + "/js/**/*.js",
+		watch: pathSrc + "/js/**/*.{js,jsx,scss}",
 		dest: pathDest + "/js"
 	},
+	reactSass: {
+		src: pathSrc + '/scss/assets/*.{jsx,js}',
+		watch: pathSrc + '/scss/app/**/*.{scss,sass,jsx}',
+		dest: pathSrc + '/js/app/css'
+	},
 	react: {
-		src: pathSrc + '/js/assets/*.jsx',
-		watch: pathSrc + "/js/**/*.jsx",
-		dest: pathDest + "/js"
+		src: pathSrc + '/js/assets/*.{jsx,js}',
+		watch: pathSrc + '/js/assets/**/*.{jsx,js}',
+		dest: pathDest + '/js/app/'
 	},
 	image: {
 		src: pathSrc + '/img/**/*.{png,jpg,jpeg,gif,svg,ico}',

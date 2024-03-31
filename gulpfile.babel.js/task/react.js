@@ -19,8 +19,8 @@ export default () => {
 			],
 			compact: false
 		}))
-		.pipe($.webPackStream(app.webpack))
-		// .pipe($.gul.concat('app.min.js'))
+		// .pipe($.gul.rename($.app.renameJs))
+		.pipe($.gul.concat('app.min.js'))
 		.pipe($.gulpIf(app.isDev, $.gul.sourcemaps.write('.', {
 			includeContent: false,
 		})))

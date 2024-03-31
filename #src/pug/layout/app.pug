@@ -5,13 +5,20 @@ html(lang="ru")
 		meta(name="viewport", content="width=device-width, initial-scale=1.0")
 		meta(name="description" content="Краткое описание документа.")
 		meta(name="keywords", content="keywords-ключевые слова для поиска")
-		link(rel="icon" href="@@webRoot/img/icons/gulp-logo.ico" type="image/icon")
+		link(rel="icon" href="@@webRoot/img/icons/react-icon.png" type="image/icon")
 		link(href="@@webRoot/css/style.min.css" rel="stylesheet" type="text/css")
 
-		script(defer="defer" type="text/javascript" src="@@webRoot/js/app.min.js")
-		script(defer="defer" type="text/javascript" src="@@webRoot/js/main.min.js")
-		title Gulp-Stary-V-ES6 
+
+		//- script(defer="defer" type="text/javascript" src="@@webRoot/js/gsap.min.js")
+		//- script(defer="defer" type="text/javascript" src="@@webRoot/js/ScrollTrigger.min.js")
+		//- script(defer="defer" type="text/javascript" src="@@webRoot/js/ScrollSmoother.min.js")
+		block head 
+			script(defer="defer"  type="text/javascript" src="@@webRoot/js/main.min.js")
+			//- script(defer="defer"   type="text/javascript" src="@@webRoot/js/app_jsx.min.js")
+
+		script(src="https://kit.fontawesome.com/01980a2bd9.js", crossorigin="anonymous")
+		block title
+			title Gulp-Stary-V-ES6 
 
 	body 
-		block page  
-		
+		block page 

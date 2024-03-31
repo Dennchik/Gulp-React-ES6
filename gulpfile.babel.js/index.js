@@ -27,18 +27,25 @@ import scss from './task/scss';
 import image from './task/image';
 import sprite from './task/sprite';
 import server from './task/server';
-
-import clearFonts from './task/clearFonts';
 import fonts from './task/fonts';
 import fontsStyle from './task/fontStyle';
+import clearFonts from './task/clearFonts';
 
 const change = $.gulp.series(clearFonts, fonts, fontsStyle);
+const changeReact = $.gulp.series(js, $.browserSync.reload);
+const changejson = $.gulp.series(json, pug);
 //* Observation
+function reload(done) {
+	$.browserSync.reload();
+	done();
+}
 const watcher = () => {
-	$.gulp.watch(path.js.watch, js).on('all', $.browserSync.reload);
+
+	$.gulp.watch(path.js.watch, $.gulp.series(js, reload));
+	$.gulp.watch(path.reactSass.watch, $.gulp.series(js, reload));
 	$.gulp.watch(path.react.watch, react).on('all', $.browserSync.reload);
 	$.gulp.watch(path.pug.watch, pug).on('all', $.browserSync.reload);
-	$.gulp.watch(path.json.watch, json).on('all', $.browserSync.reload);
+	$.gulp.watch(path.json.watch, changejson).on('all', $.browserSync.reload);
 	$.gulp.watch(path.json.readFile, pug).on('all', $.browserSync.reload);
 	$.gulp.watch(path.scss.watch, scss).on('all', $.browserSync.reload);
 	$.gulp.watch(path.image.watch, image).on('all', $.browserSync.reload);
@@ -48,7 +55,7 @@ const watcher = () => {
 };
 const end = $.gulp.series(
 	clear, json,
-	$.gulp.parallel(pug, image, sprite, scss, js, react, fonts), fontsStyle
+	$.gulp.parallel(pug, scss, js, react, image, sprite, fonts), fontsStyle
 );
 const dev = $.gulp.series(end, $.gulp.parallel(watcher, server));
 //* Call back

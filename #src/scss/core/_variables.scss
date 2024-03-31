@@ -23,8 +23,9 @@ $yellow: #ecc673ee;
 $orange: #f67438;
 $second-color: #002f5a;
 $darkcyan: darkcyan;
-$color: #058daf;
+$color: rgb(5, 141, 175);
 $text-color: #000000;
+$red: red;
 //* ---------------------------- [Other colors] --------------------------------
 $boxShadow: #000;
 $boxShadowSecond: #000;
@@ -38,6 +39,8 @@ $text-color-selection: #9b9999;
 
 // -----------------------------------------------------------------------------
 :root {
+	--index: calc(1vw + 1vh);
+	//* ----------------------------- [Vareables] --------------------------------
 	--font-body-color: #7f8dcf;
 	--font-color-second: #4d5bce;
 	--font-color-title: #88c0ff;
