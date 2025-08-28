@@ -11,6 +11,7 @@ export default function Header() {
 					<a href="http://">View Source (◕‿◕)
 						SYMBL </a>
 					<i className="fa-solid fa-bell"></i>
+					<i className="icon-amazon"></i>
 				</div>
 			</div>
 		</div >

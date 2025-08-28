@@ -1,6 +1,6 @@
 //* Configuration
-import path from '../config/path.js';
 import app from '../config/app.js';
+import path from '../config/path.js';
 //* Scss Processing
 export default () => {
 	return $.gulp.src(path.scss.src)

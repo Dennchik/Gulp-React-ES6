@@ -3,38 +3,43 @@ import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../../scss/app/ScrollAccordion.scss';
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-ScrollSmoother.create({
-	content: '.main-content__content',
-	wrapper: '.main-content',
-	smooth: true,
-	effects: true,
-	normalizeScroll: true
-});
-// Создаем таймлайн GSAP
-const tl = gsap.timeline({
-	scrollTrigger: {
-		trigger: '.accordions',
-		pin: true,
-		start: 'top top',
-		end: 'bottom top',
-		scrub: 1,
-		ease: 'linear',
-	}
-});
+export default () => {
+	// gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
+	gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+	ScrollTrigger.normalizeScroll(true);
+	ScrollSmoother.create({
+		content: '.main-content__body',
+		wrapper: '.main-container',
+		smooth: true,
+		effects: true,
+		normalizeScroll: true
+	});
 
-// Добавляем анимацию к элементам
-tl.to('.accordions__item .accordions__text', {
-	height: 0,
-	paddingBottom: 0,
-	opacity: 0,
-	stagger: .5,
-});
-tl.to('.accordions__item', {
-	marginBottom: -15,
-	stagger: .5,
-}, '<');
+	// Создаем таймлайн GSAP
+	const tl = gsap.timeline({
+		scrollTrigger: {
+			trigger: '.accordions',
+			pin: true,
+			start: 'top top',
+			end: 'bottom top',
+			scrub: 1,
+			ease: 'linear',
+			// markers: true
+		}
+	});
 
+	// Добавляем анимацию к элементам
+	tl.to('.accordions__item .accordions__text', {
+		height: 0,
+		paddingBottom: 0,
+		opacity: 0,
+		stagger: .5,
+	});
+	tl.to('.accordions__item', {
+		marginBottom: -15,
+		stagger: .5,
+	}, '<');
+}
 
 
 

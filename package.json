@@ -4,12 +4,11 @@
 	"description": "Сборка Gulp-V-ES6",
 	"main": "index.js",
 	"scripts": {
-		"(1) (Project)": "gulp",
-		"(2) (Production)": "gulp --production",
+		"(1) DEV (Project)": "gulp",
+		"(2) PROD (Build)": "gulp --production",
 		"DEL (Build)": "gulp clear",
 		"PUG": "gulp pug",
 		"HTML": "gulp html",
-		"REACT": "gulp react",
 		"JSON": "gulp json",
 		"SCSS": "gulp scss",
 		"JAVA-Script": "gulp js",
@@ -25,21 +24,14 @@
 	"license": "ISC",
 	"babel": {
 		"presets": [
-			"@babel/preset-react",
 			"@babel/preset-env"
 		]
 	},
 	"devDependencies": {
 		"@babel/core": "^7.23.2",
 		"@babel/preset-env": "^7.23.2",
-		"@babel/preset-react": "^7.24.1",
 		"@babel/register": "^7.18.9",
-		"@sentry/react": "^7.109.0",
-		"@sentry/tracing": "^7.109.0",
 		"@types/jest": "^29.5.12",
-		"@types/scrollmagic": "^2.0.8",
-		"axios": "^1.6.8",
-		"babel-loader": "^9.1.3",
 		"browser-sync": "^2.27.10",
 		"css-loader": "^6.10.0",
 		"eslint-config-prettier": "^9.1.0",
@@ -85,35 +77,24 @@
 		"gulp-webp": "^4.0.1",
 		"gulp-webp-css": "^1.1.0",
 		"gulp-webp-html": "^1.0.2",
-		"html-loader": "^5.0.0",
 		"imagemin": "^8.0.1",
 		"imagemin-jpeg-recompress": "^7.1.0",
 		"imagemin-pngquant": "^9.0.2",
 		"js-loader": "^0.1.1",
-		"jsx-loader": "^0.13.2",
-		"parallax-js": "^3.1.0",
 		"prettier": "^3.2.5",
-		"raw-loader": "^4.0.2",
-		"react": "^18.2.0",
-		"react-dom": "^18.2.0",
 		"require-dir": "^1.2.0",
-		"sass": "^1.72.0",
-		"sass-loader": "^14.1.1",
-		"scrollmagic": "^2.0.8",
-		"smooth-scroll": "^16.1.3",
+		"sass": "^1.54.5",
+		"sass-loader": "^14.1.0",
 		"style-loader": "^3.3.4",
 		"swiper": "^11.0.6",
-		"terser-webpack-plugin": "^5.3.10",
-		"webpack": "^5.91.0",
+		"webpack": "^5.73.0",
 		"webpack-stream": "^7.0.0"
 	},
 	"dependencies": {
 		"animejs": "^3.2.2",
 		"D": "^1.0.0",
 		"del": "^6.1.1",
-		"gsap": "^3.12.5",
 		"gulp-cli": "^2.3.0",
-		"postcss": "^8.4.35",
-		"rellax": "^1.12.1"
+		"postcss": "^8.4.35"
 	}
 }

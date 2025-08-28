@@ -85,6 +85,8 @@ export default {
 			},
 		},
 		entry: {
+			ScrollSmoother: './#src/js/app/applications/ScrollSmoother.js',
+			ScrollTrigger: './#src/js/app/applications/ScrollTrigger.js',
 			app_jsx: './#src/js/module/app_jsx.jsx',
 			app: './#src/js/app.js',
 			main: './#src/js/main.js'
